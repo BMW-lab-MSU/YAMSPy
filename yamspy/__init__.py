@@ -899,14 +899,14 @@ class MSPy:
                     rebooting = False
 
 
-    def set_ARMING_DISABLE(self, armingDisabled=0, runawayTakeoffPreventionDisabled=0):
+    def set_ARMING_DISABLED(self, armingDisabled=0, runawayTakeoffPreventionDisabled=0):
         """Disable Arming or runaway takeoff prevention
         
         runawayTakeoffPreventionDisabled will be ignored if armingDisabled is true
         https://github.com/betaflight/betaflight/wiki/Runaway-Takeoff-Prevention
         """
         data = bytearray([armingDisabled, runawayTakeoffPreventionDisabled])
-        return self.send_RAW_msg(MSPy.MSPCodes['MSP_ARMING_DISABLE'], data)
+        return self.send_RAW_msg(MSPy.MSPCodes['MSP_SET_ARMING_DISABLED'], data)
 
 
     def set_RX_MAP(self, new_rc_map):
@@ -2037,7 +2037,7 @@ class MSPy:
     def process_MSP_COPY_PROFILE(self, data):
         logging.info('Copy profile')
         
-    def process_MSP_ARMING_DISABLE(self, data):
+    def process_MSP_SET_ARMING_DISABLED(self, data):
         logging.info('Arming disable')
         
     def process_MSP_SET_RTC(self, data):
