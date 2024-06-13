@@ -734,7 +734,7 @@ class MSPy:
         """
         msg = 'MSP_API_VERSION'
         while self.CONFIG['apiVersion'] == '0.0.0':
-            print(f"Waiting for {msg} reply...")
+            # print(f"Waiting for {msg} reply...")
             sent = 0
             while sent<=0:
                 sent = self.send_RAW_msg(MSPy.MSPCodes[msg], data=[])
@@ -743,7 +743,7 @@ class MSPy:
 
         msg = 'MSP_FC_VARIANT'
         while self.CONFIG['flightControllerIdentifier'] == '':
-            print(f"Waiting for {msg} reply...")
+            # print(f"Waiting for {msg} reply...")
             sent = 0
             while sent<=0:
                 sent = self.send_RAW_msg(MSPy.MSPCodes[msg], data=[])
@@ -767,7 +767,7 @@ class MSPy:
             dataHandler = self.receive_msg()
             self.process_recv_data(dataHandler)
     
-        print(self.CONFIG)
+        # print(self.CONFIG)
 
     def receive_msg(self, dataHandler=None, delete_buffer=False):
         with self.port_read_lock:
