@@ -771,7 +771,7 @@ class MSPy:
 
     def receive_msg(self, dataHandler=None, delete_buffer=False):
         with self.port_read_lock:
-            return msp_ctrl.receive_msg(self.read, logging, dataHandler, delete_buffer)
+            return msp_ctrl.receive_msg(self.read, logging, dataHandler=dataHandler, delete_buffer=delete_buffer)
 
     def read_buffer_len(self):
         return len(msp_ctrl.read_buffer)
