@@ -47,7 +47,6 @@ import logging
 import struct
 import time
 import sys
-from select import select
 
 from threading import Lock, RLock
 
@@ -651,7 +650,6 @@ class MSPy:
             self.timeout_exception = serial.SerialTimeoutException
 
             def ser_read():
-                _,_,_ = select([self.conn],[],[])  # wait for data
                 data = self.conn.read(self.conn.in_waiting) # blocking
                 return data
             self.read = ser_read
